@@ -1,1 +1,1 @@
-console.log(null);
+export { createDateInputControl } from './create-date-input-control';
