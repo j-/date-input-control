@@ -1,3 +1,4 @@
+import { clean } from './clean';
 import { focus, focusStart, focusEnd } from './focus';
 import { isSelectionStart, isSelectionEnd, isSelectionEmpty } from './selection';
 import {
@@ -10,6 +11,12 @@ import {
 } from './is-key';
 
 export const createDateInputControl = (elDD: HTMLInputElement, elMM: HTMLInputElement, elYYYY: HTMLInputElement) => {
+
+  const onInput = (e: Event) => {
+    const currentTarget = e.currentTarget as HTMLInputElement;
+    // Strip field of non-numeric characters when changed
+    currentTarget.value = clean(currentTarget.value);
+  };
 
   /* Day */
 
@@ -255,19 +262,25 @@ export const createDateInputControl = (elDD: HTMLInputElement, elMM: HTMLInputEl
   elMM.addEventListener('keydown', onKeyDownMM);
   elMM.addEventListener('keyup', onKeyUpMM);
   elMM.addEventListener('keypress', onKeyPressMM);
+  elMM.addEventListener('input', onInput);
   elDD.addEventListener('keydown', onKeyDownDD);
   elDD.addEventListener('keyup', onKeyUpDD);
   elDD.addEventListener('keypress', onKeyPressDD);
+  elDD.addEventListener('input', onInput);
   elYYYY.addEventListener('keydown', onKeyDownYYYY);
   elYYYY.addEventListener('keypress', onKeyPressYYYY);
+  elYYYY.addEventListener('input', onInput);
   return () => {
     elDD.removeEventListener('keydown', onKeyDownDD);
     elDD.removeEventListener('keyup', onKeyUpDD);
     elDD.removeEventListener('keypress', onKeyPressDD);
+    elDD.removeEventListener('input', onInput);
     elMM.removeEventListener('keydown', onKeyDownMM);
     elMM.removeEventListener('keyup', onKeyUpMM);
     elMM.removeEventListener('keypress', onKeyPressMM);
+    elMM.removeEventListener('input', onInput);
     elYYYY.removeEventListener('keydown', onKeyDownYYYY);
     elYYYY.removeEventListener('keypress', onKeyPressYYYY);
+    elYYYY.removeEventListener('input', onInput);
   };
 };
