@@ -20,9 +20,7 @@ export const createDateInputControl = (elDD: HTMLInputElement, elMM: HTMLInputEl
       // If delete key was pressed
       isKeyDelete(key) &&
       // at the end of the field
-      isSelectionEnd(currentTarget) &&
-      // and we have a month field
-      elMM !== null
+      isSelectionEnd(currentTarget)
     ) {
       // Move focus to start of month field
       focusStart(elMM);
@@ -32,9 +30,7 @@ export const createDateInputControl = (elDD: HTMLInputElement, elMM: HTMLInputEl
       // If right arrow key was pressed
       isKeyArrowRight(key) &&
       // when the cursor is at the end of the field
-      isSelectionEnd(currentTarget) &&
-      // and the we have a month field
-      elMM !== null
+      isSelectionEnd(currentTarget)
     ) {
       // Prevent cursor moving
       e.preventDefault();
@@ -54,8 +50,6 @@ export const createDateInputControl = (elDD: HTMLInputElement, elMM: HTMLInputEl
       isSelectionEnd(currentTarget) &&
       // and the field has two characters in it now
       currentTarget.value.length >= 2 &&
-      // and the we have a month field
-      elMM !== null &&
       // and the month field is not full
       elMM.value.length < 2
     ) {
@@ -77,8 +71,6 @@ export const createDateInputControl = (elDD: HTMLInputElement, elMM: HTMLInputEl
       if (
         // If pressed on a non-empty field
         currentTarget.value !== '' &&
-        // and we have a month field
-        elMM !== null &&
         // and no text was highlighted
         isSelectionEmpty(currentTarget)
       ) {
@@ -96,8 +88,6 @@ export const createDateInputControl = (elDD: HTMLInputElement, elMM: HTMLInputEl
         isSelectionEnd(currentTarget) &&
         // and the field has two characters in it already
         currentTarget.value.length >= 2 &&
-        // and the we have a month field
-        elMM !== null &&
         // and the month field is not full
         elMM.value.length < 2
       ) {
@@ -119,9 +109,7 @@ export const createDateInputControl = (elDD: HTMLInputElement, elMM: HTMLInputEl
       // If backspace key was pressed
       isKeyBackspace(key) &&
       // at the beginning of the field
-      isSelectionStart(currentTarget) &&
-      // and we have a day field
-      elDD !== null
+      isSelectionStart(currentTarget)
     ) {
       // Move focus to end of day field
       focusEnd(elDD);
@@ -131,9 +119,7 @@ export const createDateInputControl = (elDD: HTMLInputElement, elMM: HTMLInputEl
       // If delete key was pressed
       isKeyDelete(key) &&
       // at the end of the field
-      isSelectionEnd(currentTarget) &&
-      // and we have a year field
-      elYYYY !== null
+      isSelectionEnd(currentTarget)
     ) {
       // Move focus to start of year field
       focusStart(elYYYY);
@@ -143,9 +129,7 @@ export const createDateInputControl = (elDD: HTMLInputElement, elMM: HTMLInputEl
       // If left arrow was pressed
       isKeyArrowLeft(key) &&
       // when the cursor is at the beginning of the field
-      isSelectionStart(currentTarget) &&
-      // and the we have a day field
-      elDD !== null
+      isSelectionStart(currentTarget)
     ) {
       // Prevent cursor moving
       e.preventDefault();
@@ -157,9 +141,7 @@ export const createDateInputControl = (elDD: HTMLInputElement, elMM: HTMLInputEl
       // If right arrow key was pressed
       isKeyArrowRight(key) &&
       // when the cursor is at the end of the field
-      isSelectionEnd(currentTarget) &&
-      // and the we have a year field
-      elYYYY !== null
+      isSelectionEnd(currentTarget)
     ) {
       // Prevent cursor moving
       e.preventDefault();
@@ -179,8 +161,6 @@ export const createDateInputControl = (elDD: HTMLInputElement, elMM: HTMLInputEl
       isSelectionEnd(currentTarget) &&
       // and the field has two characters in it now
       currentTarget.value.length >= 2 &&
-      // and the we have a month field
-      elYYYY !== null &&
       // and the month field is not full
       elYYYY.value.length < 4
     ) {
@@ -202,8 +182,6 @@ export const createDateInputControl = (elDD: HTMLInputElement, elMM: HTMLInputEl
       if (
         // If pressed on a non-empty field
         currentTarget.value !== '' &&
-        // and we have a year field
-        elYYYY !== null &&
         // and no text was highlighted
         isSelectionEmpty(currentTarget)
       ) {
@@ -221,8 +199,6 @@ export const createDateInputControl = (elDD: HTMLInputElement, elMM: HTMLInputEl
         isSelectionEnd(currentTarget) &&
         // and the field has two characters in it already
         currentTarget.value.length >= 2 &&
-        // and the we have a year field
-        elYYYY !== null &&
         // and the year field is not full
         elYYYY.value.length < 4
       ) {
@@ -244,9 +220,7 @@ export const createDateInputControl = (elDD: HTMLInputElement, elMM: HTMLInputEl
       // If backspace key was pressed
       isKeyBackspace(key) &&
       // at the beginning of the field
-      isSelectionStart(currentTarget) &&
-      // and we have a month field
-      elMM !== null
+      isSelectionStart(currentTarget)
     ) {
       // Move focus to end of month field
       focusEnd(elMM);
@@ -256,9 +230,7 @@ export const createDateInputControl = (elDD: HTMLInputElement, elMM: HTMLInputEl
       // If left arrow was pressed
       isKeyArrowLeft(key) &&
       // when the cursor is at the beginning of the field
-      isSelectionStart(currentTarget) &&
-      // and the we have a month field
-      elMM !== null
+      isSelectionStart(currentTarget)
     ) {
       // Prevent cursor moving
       e.preventDefault();
