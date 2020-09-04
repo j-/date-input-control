@@ -19,12 +19,8 @@ export const createDateInputControl = (elDD: HTMLInputElement, elMM: HTMLInputEl
     if (
       // If delete key was pressed
       isKeyDelete(key) &&
-      (
-        // on an empty field
-        currentTarget.value === '' ||
-        // or at the end of the field
-        isSelectionEnd(currentTarget)
-      ) &&
+      // at the end of the field
+      isSelectionEnd(currentTarget) &&
       // and we have a month field
       elMM !== null
     ) {
@@ -122,12 +118,8 @@ export const createDateInputControl = (elDD: HTMLInputElement, elMM: HTMLInputEl
     if (
       // If backspace key was pressed
       isKeyBackspace(key) &&
-      (
-        // on an empty field
-        currentTarget.value === '' ||
-        // or at the beginning of the field
-        isSelectionStart(currentTarget)
-      ) &&
+      // at the beginning of the field
+      isSelectionStart(currentTarget) &&
       // and we have a day field
       elDD !== null
     ) {
@@ -138,12 +130,8 @@ export const createDateInputControl = (elDD: HTMLInputElement, elMM: HTMLInputEl
     if (
       // If delete key was pressed
       isKeyDelete(key) &&
-      (
-        // on an empty field
-        currentTarget.value === '' ||
-        // or at the end of the field
-        isSelectionEnd(currentTarget)
-      ) &&
+      // at the end of the field
+      isSelectionEnd(currentTarget) &&
       // and we have a year field
       elYYYY !== null
     ) {
@@ -255,12 +243,8 @@ export const createDateInputControl = (elDD: HTMLInputElement, elMM: HTMLInputEl
     if (
       // If backspace key was pressed
       isKeyBackspace(key) &&
-      (
-        // on an empty field
-        currentTarget.value === '' ||
-        // or at the beginning of the field
-        isSelectionStart(currentTarget)
-      ) &&
+      // at the beginning of the field
+      isSelectionStart(currentTarget) &&
       // and we have a month field
       elMM !== null
     ) {
