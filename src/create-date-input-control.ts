@@ -1,4 +1,5 @@
 import { focus, focusStart, focusEnd } from './focus';
+import { isSelectionStart, isSelectionEnd, isSelectionEmpty } from './selection';
 import {
   isKeyArrowLeft,
   isKeyArrowRight,
@@ -22,7 +23,7 @@ export const createDateInputControl = (elDD: HTMLInputElement, elMM: HTMLInputEl
         // on an empty field
         currentTarget.value === '' ||
         // or at the end of the field
-        (currentTarget.selectionStart === currentTarget.value.length && currentTarget.selectionEnd === currentTarget.value.length)
+        isSelectionEnd(currentTarget)
       ) &&
       // and we have a month field
       elMM !== null
@@ -35,7 +36,7 @@ export const createDateInputControl = (elDD: HTMLInputElement, elMM: HTMLInputEl
       // If right arrow key was pressed
       isKeyArrowRight(key) &&
       // when the cursor is at the end of the field
-      currentTarget.selectionStart === currentTarget.value.length && currentTarget.selectionEnd === currentTarget.value.length &&
+      isSelectionEnd(currentTarget) &&
       // and the we have a month field
       elMM !== null
     ) {
@@ -54,7 +55,7 @@ export const createDateInputControl = (elDD: HTMLInputElement, elMM: HTMLInputEl
       // If number key was pressed
       isKeyNumeric(key) &&
       // when the cursor was at the end of the field
-      currentTarget.selectionStart === currentTarget.value.length && currentTarget.selectionEnd === currentTarget.value.length &&
+      isSelectionEnd(currentTarget) &&
       // and the field has two characters in it now
       currentTarget.value.length >= 2 &&
       // and the we have a month field
@@ -83,7 +84,7 @@ export const createDateInputControl = (elDD: HTMLInputElement, elMM: HTMLInputEl
         // and we have a month field
         elMM !== null &&
         // and no text was highlighted
-        currentTarget.selectionStart === currentTarget.selectionEnd
+        isSelectionEmpty(currentTarget)
       ) {
         // Move focus to anywhere in month field
         focus(elMM);
@@ -96,7 +97,7 @@ export const createDateInputControl = (elDD: HTMLInputElement, elMM: HTMLInputEl
     ) {
       if (
         // when the cursor is at the end of the field
-        currentTarget.selectionStart === currentTarget.value.length && currentTarget.selectionEnd === currentTarget.value.length &&
+        isSelectionEnd(currentTarget) &&
         // and the field has two characters in it already
         currentTarget.value.length >= 2 &&
         // and the we have a month field
@@ -125,7 +126,7 @@ export const createDateInputControl = (elDD: HTMLInputElement, elMM: HTMLInputEl
         // on an empty field
         currentTarget.value === '' ||
         // or at the beginning of the field
-        (currentTarget.selectionStart === 0 && currentTarget.selectionEnd === 0)
+        isSelectionStart(currentTarget)
       ) &&
       // and we have a day field
       elDD !== null
@@ -141,7 +142,7 @@ export const createDateInputControl = (elDD: HTMLInputElement, elMM: HTMLInputEl
         // on an empty field
         currentTarget.value === '' ||
         // or at the end of the field
-        (currentTarget.selectionStart === currentTarget.value.length && currentTarget.selectionEnd === currentTarget.value.length)
+        isSelectionEnd(currentTarget)
       ) &&
       // and we have a year field
       elYYYY !== null
@@ -154,7 +155,7 @@ export const createDateInputControl = (elDD: HTMLInputElement, elMM: HTMLInputEl
       // If left arrow was pressed
       isKeyArrowLeft(key) &&
       // when the cursor is at the beginning of the field
-      currentTarget.selectionStart === 0 && currentTarget.selectionEnd === 0 &&
+      isSelectionStart(currentTarget) &&
       // and the we have a day field
       elDD !== null
     ) {
@@ -168,7 +169,7 @@ export const createDateInputControl = (elDD: HTMLInputElement, elMM: HTMLInputEl
       // If right arrow key was pressed
       isKeyArrowRight(key) &&
       // when the cursor is at the end of the field
-      currentTarget.selectionStart === currentTarget.value.length && currentTarget.selectionEnd === currentTarget.value.length &&
+      isSelectionEnd(currentTarget) &&
       // and the we have a year field
       elYYYY !== null
     ) {
@@ -187,7 +188,7 @@ export const createDateInputControl = (elDD: HTMLInputElement, elMM: HTMLInputEl
       // If number key was pressed
       isKeyNumeric(key) &&
       // when the cursor was at the end of the field
-      currentTarget.selectionStart === currentTarget.value.length && currentTarget.selectionEnd === currentTarget.value.length &&
+      isSelectionEnd(currentTarget) &&
       // and the field has two characters in it now
       currentTarget.value.length >= 2 &&
       // and the we have a month field
@@ -216,7 +217,7 @@ export const createDateInputControl = (elDD: HTMLInputElement, elMM: HTMLInputEl
         // and we have a year field
         elYYYY !== null &&
         // and no text was highlighted
-        currentTarget.selectionStart === currentTarget.selectionEnd
+        isSelectionEmpty(currentTarget)
       ) {
         // Move focus to year field
         focus(elYYYY);
@@ -229,7 +230,7 @@ export const createDateInputControl = (elDD: HTMLInputElement, elMM: HTMLInputEl
     ) {
       if (
         // when the cursor is at the end of the field
-        currentTarget.selectionStart === currentTarget.value.length && currentTarget.selectionEnd === currentTarget.value.length &&
+        isSelectionEnd(currentTarget) &&
         // and the field has two characters in it already
         currentTarget.value.length >= 2 &&
         // and the we have a year field
@@ -258,7 +259,7 @@ export const createDateInputControl = (elDD: HTMLInputElement, elMM: HTMLInputEl
         // on an empty field
         currentTarget.value === '' ||
         // or at the beginning of the field
-        (currentTarget.selectionStart === 0 && currentTarget.selectionEnd === 0)
+        isSelectionStart(currentTarget)
       ) &&
       // and we have a month field
       elMM !== null
@@ -271,7 +272,7 @@ export const createDateInputControl = (elDD: HTMLInputElement, elMM: HTMLInputEl
       // If left arrow was pressed
       isKeyArrowLeft(key) &&
       // when the cursor is at the beginning of the field
-      currentTarget.selectionStart === 0 && currentTarget.selectionEnd === 0 &&
+      isSelectionStart(currentTarget) &&
       // and the we have a month field
       elMM !== null
     ) {
