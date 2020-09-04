@@ -24,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/j-/date-input-control/issues"
   },
-  "homepage": "https://github.com/j-/date-input-control#readme"
+  "homepage": "https://github.com/j-/date-input-control#readme",
+  "devDependencies": {
+    "typescript": "^4.0.2"
+  }
 }
