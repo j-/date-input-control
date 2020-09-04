@@ -259,14 +259,14 @@ export const createDateInputControl = (elDD: HTMLInputElement, elMM: HTMLInputEl
     e.preventDefault();
   };
 
-  elMM.addEventListener('keydown', onKeyDownMM);
-  elMM.addEventListener('keyup', onKeyUpMM);
-  elMM.addEventListener('keypress', onKeyPressMM);
-  elMM.addEventListener('input', onInput);
   elDD.addEventListener('keydown', onKeyDownDD);
   elDD.addEventListener('keyup', onKeyUpDD);
   elDD.addEventListener('keypress', onKeyPressDD);
   elDD.addEventListener('input', onInput);
+  elMM.addEventListener('keydown', onKeyDownMM);
+  elMM.addEventListener('keyup', onKeyUpMM);
+  elMM.addEventListener('keypress', onKeyPressMM);
+  elMM.addEventListener('input', onInput);
   elYYYY.addEventListener('keydown', onKeyDownYYYY);
   elYYYY.addEventListener('keypress', onKeyPressYYYY);
   elYYYY.addEventListener('input', onInput);
