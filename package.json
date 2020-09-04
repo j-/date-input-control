@@ -1,0 +1,28 @@
+{
+  "name": "date-input-control",
+  "version": "0.0.0",
+  "description": "Capture dates using day, month and year components",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/j-/date-input-control.git"
+  },
+  "keywords": [
+    "date",
+    "field",
+    "component",
+    "auto",
+    "focus",
+    "react",
+    "dom"
+  ],
+  "author": "Jamie Hoeks <j@skeoh.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/j-/date-input-control/issues"
+  },
+  "homepage": "https://github.com/j-/date-input-control#readme"
+}
