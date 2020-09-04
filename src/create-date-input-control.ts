@@ -161,7 +161,7 @@ export const createDateInputControl = (elDD: HTMLInputElement, elMM: HTMLInputEl
       isSelectionEnd(currentTarget) &&
       // and the field has two characters in it now
       currentTarget.value.length >= 2 &&
-      // and the month field is not full
+      // and the year field is not full
       elYYYY.value.length < 4
     ) {
       // Move focus to start of year field
