@@ -11,6 +11,13 @@ import {
 
 export const createDateInputControl = (elDD: HTMLInputElement, elMM: HTMLInputElement, elYYYY: HTMLInputElement) => {
 
+  const onTextInput = (e: Event) => {
+    const data = (e as InputEvent).data;
+    if (data && data.search(/[^0-9]/) > -1) {
+      e.preventDefault();
+    }
+  };
+
   /* Day */
 
   const onKeyDownDD = (e: KeyboardEvent) => {
@@ -255,19 +262,25 @@ export const createDateInputControl = (elDD: HTMLInputElement, elMM: HTMLInputEl
   elDD.addEventListener('keydown', onKeyDownDD);
   elDD.addEventListener('keyup', onKeyUpDD);
   elDD.addEventListener('keypress', onKeyPressDD);
+  elDD.addEventListener('textInput', onTextInput);
   elMM.addEventListener('keydown', onKeyDownMM);
   elMM.addEventListener('keyup', onKeyUpMM);
   elMM.addEventListener('keypress', onKeyPressMM);
+  elMM.addEventListener('textInput', onTextInput);
   elYYYY.addEventListener('keydown', onKeyDownYYYY);
   elYYYY.addEventListener('keypress', onKeyPressYYYY);
+  elYYYY.addEventListener('textInput', onTextInput);
   return () => {
     elDD.removeEventListener('keydown', onKeyDownDD);
     elDD.removeEventListener('keyup', onKeyUpDD);
     elDD.removeEventListener('keypress', onKeyPressDD);
+    elDD.removeEventListener('textInput', onTextInput);
     elMM.removeEventListener('keydown', onKeyDownMM);
     elMM.removeEventListener('keyup', onKeyUpMM);
     elMM.removeEventListener('keypress', onKeyPressMM);
+    elMM.removeEventListener('textInput', onTextInput);
     elYYYY.removeEventListener('keydown', onKeyDownYYYY);
     elYYYY.removeEventListener('keypress', onKeyPressYYYY);
+    elYYYY.removeEventListener('textInput', onTextInput);
   };
 };
