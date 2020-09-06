@@ -54,7 +54,7 @@ export const createDateInputControlPart = (elPrev: HTMLInputElement | null, elCu
     ) {
       // Prevent cursor moving
       e.preventDefault();
-      // Move focus to end of the previous field field
+      // Move focus to end of the previous field
       focusEnd(elPrev);
       return;
     }
