@@ -1,12 +1,8 @@
 import { createDateInputControlPart } from './create-date-input-control-part';
 
-export const createDateInputControl = (elDD: HTMLInputElement, elMM: HTMLInputElement, elYYYY: HTMLInputElement) => {
-  const unsubscribeDD = createDateInputControlPart(null, elDD, elMM);
-  const unsubscribeMM = createDateInputControlPart(elDD, elMM, elYYYY);
-  const unsubscribeYYYY = createDateInputControlPart(elMM, elYYYY, null);
-  return () => {
-    unsubscribeDD();
-    unsubscribeMM();
-    unsubscribeYYYY();
-  };
+export const createDateInputControl = (inputs: ArrayLike<HTMLInputElement>) => {
+  const callbacks = Array.from(inputs).map((input, i, inputs) => (
+    createDateInputControlPart(inputs[i - 1], input, inputs[i + 1])
+  ));
+  return () => callbacks.forEach((fn) => fn());
 };
