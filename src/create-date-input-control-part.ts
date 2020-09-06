@@ -10,14 +10,11 @@ import {
   isKeySeparator,
 } from './is-key';
 
-export const createDateInputControlPart = (elPrev: HTMLInputElement | null, elCurr: HTMLInputElement, elNext: HTMLInputElement | null) => {
-  const onTextInput = (e: Event) => {
-    const data = (e as InputEvent).data;
-    if (data && data.search(/[^0-9]/) > -1) {
-      e.preventDefault();
-    }
-  };
-
+export const createDateInputControlPart = (
+  elPrev: HTMLInputElement | null | undefined,
+  elCurr: HTMLInputElement,
+  elNext: HTMLInputElement | null | undefined,
+) => {
   const onKeyDown = (e: KeyboardEvent) => {
     const { key } = e;
     const currentTarget = e.currentTarget as HTMLInputElement;
@@ -75,25 +72,6 @@ export const createDateInputControlPart = (elPrev: HTMLInputElement | null, elCu
     }
   };
 
-  const onKeyUp = (e: KeyboardEvent) => {
-    const { key } = e;
-    const currentTarget = e.currentTarget as HTMLInputElement;
-    if (
-      // If number key was pressed
-      isKeyNumeric(key) &&
-      // when the cursor was at the end of the field
-      isSelectionEnd(currentTarget) &&
-      // and the field is full
-      isInputFull(currentTarget) &&
-      // and the the next field is not full
-      elNext && !isInputFull(elNext)
-    ) {
-      // Move focus to start of the next field
-      focusStart(elNext);
-      return;
-    }
-  };
-
   const onKeyPress = (e: KeyboardEvent) => {
     const { key } = e;
     const currentTarget = e.currentTarget as HTMLInputElement;
@@ -137,14 +115,40 @@ export const createDateInputControlPart = (elPrev: HTMLInputElement | null, elCu
     e.preventDefault();
   };
 
+  const onKeyUp = (e: KeyboardEvent) => {
+    const { key } = e;
+    const currentTarget = e.currentTarget as HTMLInputElement;
+    if (
+      // If number key was pressed
+      isKeyNumeric(key) &&
+      // when the cursor was at the end of the field
+      isSelectionEnd(currentTarget) &&
+      // and the field is full
+      isInputFull(currentTarget) &&
+      // and the the next field is not full
+      elNext && !isInputFull(elNext)
+    ) {
+      // Move focus to start of the next field
+      focusStart(elNext);
+      return;
+    }
+  };
+
+  const onTextInput = (e: Event) => {
+    const data = (e as InputEvent).data;
+    if (data && data.search(/[^0-9]/) > -1) {
+      e.preventDefault();
+    }
+  };
+
   elCurr.addEventListener('keydown', onKeyDown);
-  elCurr.addEventListener('keyup', onKeyUp);
   elCurr.addEventListener('keypress', onKeyPress);
+  elCurr.addEventListener('keyup', onKeyUp);
   elCurr.addEventListener('textInput', onTextInput);
   return () => {
     elCurr.removeEventListener('keydown', onKeyDown);
-    elCurr.removeEventListener('keyup', onKeyUp);
     elCurr.removeEventListener('keypress', onKeyPress);
+    elCurr.removeEventListener('keyup', onKeyUp);
     elCurr.removeEventListener('textInput', onTextInput);
   };
 };
