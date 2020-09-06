@@ -1,5 +1,6 @@
 import { focus, focusStart, focusEnd } from './focus';
 import { isSelectionStart, isSelectionEnd, isSelectionEmpty } from './selection';
+import { isInputEmpty, isInputFull } from './input';
 import {
   isKeyArrowLeft,
   isKeyArrowRight,
@@ -83,9 +84,9 @@ export const createDateInputControlPart = (elPrev: HTMLInputElement | null, elCu
       // when the cursor was at the end of the field
       isSelectionEnd(currentTarget) &&
       // and the field is full
-      currentTarget.value.length >= currentTarget.maxLength &&
+      isInputFull(currentTarget) &&
       // and the the next field is not full
-      elNext && elNext.value.length < elNext.maxLength
+      elNext && !isInputFull(elNext)
     ) {
       // Move focus to start of the next field
       focusStart(elNext);
@@ -104,7 +105,7 @@ export const createDateInputControlPart = (elPrev: HTMLInputElement | null, elCu
       e.preventDefault();
       if (
         // If pressed on a non-empty field
-        currentTarget.value !== '' &&
+        !isInputEmpty(currentTarget) &&
         // and no text was highlighted
         isSelectionEmpty(currentTarget) &&
         // and there is a field to the right
@@ -123,9 +124,9 @@ export const createDateInputControlPart = (elPrev: HTMLInputElement | null, elCu
         // when the cursor is at the end of the field
         isSelectionEnd(currentTarget) &&
         // and the field is full
-        currentTarget.value.length >= currentTarget.maxLength &&
+        isInputFull(currentTarget) &&
         // and the the next field is not full
-        elNext && elNext.value.length < elNext.maxLength
+        elNext && !isInputFull(elNext)
       ) {
         // Move focus to start of the next field
         focusStart(elNext);
