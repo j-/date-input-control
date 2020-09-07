@@ -57,6 +57,12 @@ each input which will enable the numeric keyboard on mobile devices.
 </fieldset>
 ```
 
+Install the `date-input-control` package in your project.
+
+```sh
+$ npm install date-input-control
+```
+
 Import `createDateInputControl` and call it with an array of input element refs.
 
 ```js
