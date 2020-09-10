@@ -1,1 +1,1 @@
-export { createDateInputControl } from './create-date-input-control';
+export { createDateInputControl, Options } from './create-date-input-control';
