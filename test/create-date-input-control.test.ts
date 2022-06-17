@@ -99,4 +99,20 @@ describe('two fields', () => {
     expect(yyyy).toHaveValue('2020');
     expect(yyyy).toHaveFocus();
   });
+
+  it('handles pasting data without separator', async () => {
+    mm.focus();
+    await userEvent.paste('123456');
+    expect(mm).toHaveValue('12');
+    expect(yyyy).toHaveValue('3456');
+    expect(yyyy).toHaveFocus();
+  });
+
+  it('handles pasting data with separator', async () => {
+    mm.focus();
+    await userEvent.paste('12/3456');
+    expect(mm).toHaveValue('12');
+    expect(yyyy).toHaveValue('3456');
+    expect(yyyy).toHaveFocus();
+  });
 });
